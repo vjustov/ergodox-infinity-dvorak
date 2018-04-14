@@ -7,7 +7,14 @@ KLL = "0.3c";
 Date = "2015-09-12";
 Generator = "KIICONF 0.2";
 
-U"EQUALS" : flashMode();
+U"5" : CONS"VOLUMEUP";
+U"4" : CONS"VOLUMEDOWN";
+U"2" : CONS"BRIGHTNESSINCREMENT";
+U"1" : CONS"BRIGHTNESSDECREMENT";
+U"E" : U"UP";
+U"F" : U"RIGHT";
+U"D" : U"DOWN";
+U"S" : U"LEFT";
 U"7" : U"NUMLOCK";
 U"8" : U"P/";
 U"9" : U"P*";
@@ -26,6 +33,7 @@ U"COMMA" : U"P2";
 U"PERIOD" : U"P3";
 U"SLASH" : U"PENTER";
 U"SPACE" : U"P0";
+U"LEFT" : U"P0";
 U"UP" : U"P.";
 U"RIGHT" : U"PENTER";
 
