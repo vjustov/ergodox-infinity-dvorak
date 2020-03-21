@@ -1,53 +1,48 @@
-# Programmers Dvorak for the Ergodox Infinity
+# ErgoDox Infinity
 
-This is the layout i use for my keyboard, i have taken bits from here and there.
+The Infinity is two completely independent keyboards, and needs to be flashed
+for the left and right halves seperately.  To flash them:
 
-### Layout.png and the json file are outdated, see the kll instead.
+  - Make sure you are in the top-level qmk_firmware directory
 
-## Installation
+  - Build the firmware with `make ergodox_infinity:keymapname`
 
-Due to the complexities of this layout i have moved away from the I:C configurator and I'm using the [controller](https://github.com/kiibohd/controller/) directly.
+  - Plug in the left hand keyboard only.
 
-You can follow the instructions [here](https://github.com/kiibohd/controller/tree/master/Keyboards#example-usage-with-web-configurator-layout-files) but you have to change a few things. Replace the whole configuration part of the ergodox-l.bash file with this (dont forget to change the sides)
+  - Press the program button (back of keyboard, above thumb pad).
 
-```
-#################
-# Configuration #
-#################
+  - Install the firmware with `sudo make ergodox_infinity:keymapname:dfu-util`
 
+  - Build right hand firmware with `make ergodox_infinity:keymapname MASTER=right`
 
-# Feel free to change the variables in this section to configure your keyboard
+  - Plug in the right hand keyboard only.
 
-BuildPath="programmers_dvorak_ergodox-L"
+  - Press the program button (back of keyboard, above thumb pad).
 
-## KLL Configuration ##
+  - Install the firmware with `sudo make ergodox_infinity:keymapname:dfu-util MASTER=right`
 
-# Generally shouldn't be changed, this will affect every layer
-BaseMap="scancode_map leftHand slave1 rightHand"
+More information on the Infinity firmware is available in the [TMK/chibios for
+Input Club Infinity Ergodox](https://github.com/fredizzimo/infinity_ergodox/blob/master/README.md)
 
-# This is the default layer of the keyboard
-# NOTE: To combine kll files into a single layout, separate them by spaces
-# e.g.  DefaultMap="mylayout mylayoutmod"
-DefaultMap="programmers_dvorak_ergodox/MDErgo1-Default-0 infinity_ergodox/lcdFuncMap"
+## Infinity Master/Two Halves
 
-# This is where you set the additional layers
-# NOTE: Indexing starts at 1
-# NOTE: Each new layer is another array entry
-# e.g.  PartialMaps[1]="layer1 layer1mod"
-#       PartialMaps[2]="layer2"
-#       PartialMaps[3]="layer3"
-PartialMaps[1]="programmers_dvorak_ergodox/MDErgo1-Default-1 infinity_ergodox/lcdFuncMap"
-PartialMaps[2]="programmers_dvorak_ergodox/MDErgo1-Default-2 infinity_ergodox/lcdFuncMap"
+The Infinity is two completely independent keyboards, that can connect together.
+You have a few options in how you flash the firmware:
 
-```
+- Flash the left half, rebuild the firmware with "MASTER=right" and then flash
+  the right half.  This allows you to plug in either half directly to the
+  computer and is what the above instructions do.
 
-## Changelog
+- Flash the left half, then flash the same firmware on the right.  This only
+  works when the left half is plugged directly to the computer and the keymap
+  is mirrored.  It saves the small extra step of rebuilding with
+  "MASTER=right".
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+- The same as the previous one but with "MASTER=right" when you build the
+  firmware, then flash the same firmware to both halves.  You just have to
+  directly connect the right half to the computer.
 
-## [0.1.0] - 2017-06-20
-### Changed
-- Moved the numbers to the Layer 2.
-- Layer one number rows are symbols from the original programmers dvorak.
+- For minor changes such as changing only the keymap without having updated
+  any part of the firmware code itself, you can program only the MASTER half.
 
+- It is safest to program both halves though.
