@@ -38,11 +38,12 @@
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+// base layer
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_ESC,                    KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
         KC_TAB,                    KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
-        MO(BRACKETS),              KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
+        MO(BRACKETS),              TG(SHELL_NAV),           KC_O,        KC_E,         KC_U,        KC_I,
         MO(SHELL_NAV),             KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        MO(KEY_NAV),
                    OSL(SHORTCUTS),OSM(MOD_LCTL), OSM(MOD_LALT),OSL(SYMBOL),MO(NUMBER),
                                               // thumb cluster
